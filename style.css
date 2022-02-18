@@ -1,0 +1,85 @@
+html {
+  width: 100%;
+  height: -webkit-fill-available;
+  height: stretch;
+}
+body {
+  height: 100vh;
+  height: -webkit-fill-available;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  border: 20px solid;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    #f70000,
+    #f89200,
+    #f8f501,
+    #038f00,
+    #0168f8,
+    #a200f7
+  );
+  overflow: hidden;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  place-content: center center;
+  place-items: center center;
+  width: 100%;
+}
+
+h1 {
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(1.2em, 16vmin, 20vmax);
+  text-align: center;
+  display: flex;
+  place-content: center center;
+  justify-content: center;
+  background: white;
+  position: relative;
+  color: transparent;
+  -webkit-text-stroke: 2px #000;
+  cursor: pointer;
+}
+
+h1:before {
+  content: attr(data-text);
+  position: absolute;
+  background: #000;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-size: 100% 90%;
+  clip-path: ellipse(5rem 5rem at var(--x) var(--y));
+  /* animation: swing 5s infinite;
+  animation-direction: alternate;*/
+}
+/*
+@keyframes swing{
+  0%{
+     -webkit-clip-path: ellipse(5rem 5rem at -2.54% -9.25%);
+    clip-path: ellipse(5rem 5rem at -2.54% -9.25%)
+  }
+  50%{
+    -webkit-clip-path: ellipse(5rem 5rem at 49.66% 64.36%);
+    clip-path: ellipse(5rem 5rem at 49.66% 64.36%);
+
+  }
+  100%{
+     -webkit-clip-path: ellipse(5rem 5rem at 102.62% -1.61%;);
+    clip-path: ellipse(5rem 5rem at 102.62% -1.61%);
+  }
+}
+
+*/
+
+/*fouc fix*/
+h1:before {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+:root:hover h1:before {
+  opacity: 1;
+}
