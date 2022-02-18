@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>CodePen - Hero cursor tracking v3</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
+  <style>body,html{height:-webkit-fill-available}html{width:100%;height:stretch}body{height:100vh;margin:0;display:flex;flex-direction:column;border:20px solid;border-image-slice:1;border-image-source:linear-gradient(#f70000,#f89200,#f8f501,#038f00,#0168f8,#a200f7);overflow:hidden}.container{flex:1;place-items:center center;width:100%}h1,h1:before{color:transparent}.container,h1{display:flex;place-content:center center}h1{font-family:sans-serif;text-transform:uppercase;font-size:clamp(1.2em,16vmin,20vmax);text-align:center;justify-content:center;background:#fff;position:relative;-webkit-text-stroke:2px #000;cursor:pointer}h1:before{content:attr(data-text);position:absolute;background:#000;-webkit-background-clip:text;background-size:100% 90%;clip-path:ellipse(5rem 5rem at var(--x) var(--y));opacity:0;transition:opacity 1s ease}:root:hover h1:before{opacity:1}
+</style>
 
 </head>
 <body>
@@ -15,6 +17,19 @@
 </section>
 <!-- partial -->
   <script  src="./script.js"></script>
+  <script>let hero = document.querySelector('[data-text]')
+
+let movecircle = function (e) {
+  let { clientX, clientY } = e
+  let x = Math.round((clientX / window.innerWidth) * 100)
+  let y = Math.round((clientY / window.innerHeight) * 100)  
+  hero.style.setProperty('--x', `${x}%`)
+  hero.style.setProperty('--y', `${y}%`)
+};
+
+['mousemove','pointermove'].forEach( e => 
+    window.addEventListener(e, movecircle, false)
+);</script>
 
 </body>
 </html>
